@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全文搜索 - 无限流TRPG圈版1.03（0.3）</title>
+<style>
+  /* ===== 變數設定 (與 index.html 同步) ===== */
+  :root {
+    --bg-dark: #faf6f0;      
+    --bg-panel: #f0e8dc;     
+    --accent: #c67b47;       
+    --accent-glow: #c67b4733;
+    --accent-dim: #a8623a;   
+    --text: #4a3728;         
+    --text-dim: #9a8575;     
+    --border: #ddd0c0;       
+    --input-bg: #ffffff;     
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    background: var(--bg-dark); 
+    color: var(--text);         
+    min-height: 100vh;
+    padding: 20px; /* 預設寬鬆邊距 */
+  }
+
+  .search-container { max-width: 800px; margin: 0 auto; }
+
+  h1 { font-size: 1.4em; color: var(--accent); margin-bottom: 16px; font-weight: 700; letter-spacing: 1px; }
+
+  /* ===== 搜尋框樣式 (預設橫排) ===== */
+  .search-box { display: flex; gap: 8px; margin-bottom: 8px; }
+
+  #searchInput {
+    flex: 1; padding: 10px 16px; font-size: 16px;
+    border: 2px solid var(--border); 
+    border-radius: 8px;
+    background: var(--input-bg); 
+    color: var(--text); 
+    outline: none;
+    font-family: 'Noto Sans TC', 'Microsoft YaHei', 'PingFang SC', sans-serif; transition: border-color 0.2s;
+    min-width: 0; /* 防止 flex 子元素溢出 */
+  }
+  #searchInput:focus { border-color: var(--accent); }
+  #searchInput::placeholder { color: var(--text-dim); }
+
+  #searchBtn {
+    padding: 10px 24px; font-size: 16px; 
+    background: var(--accent); 
+    color: white; 
+    border: none; border-radius: 8px; cursor: pointer;
+    font-family: 'Noto Sans TC', 'Microsoft YaHei', 'PingFang SC', sans-serif; font-weight: 500;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  #searchBtn:hover { background: var(--accent-dim); }
+
+  .search-options { display: flex; gap: 16px; margin-bottom: 16px; font-size: 14px; color: var(--text-dim); flex-wrap: wrap; }
+  .search-options label { cursor: pointer; display: flex; align-items: center; gap: 4px; }
+  .search-options input[type="checkbox"] { accent-color: var(--accent); }
+
+  #status { padding: 12px 0; font-size: 14px; color: var(--text-dim); }
+  #results { display: flex; flex-direction: column; gap: 12px; }
+
+  .result-item {
+    background: #ffffff; 
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; transition: border-color 0.2s; cursor: pointer;
+  }
+  .result-item:hover { border-color: var(--accent); }
+
+  .result-path {
+    font-size: 12px; color: var(--accent); margin-bottom: 6px; opacity: 0.8;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+
+  .result-title { font-size: 1.1em; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .result-title a { color: inherit; text-decoration: none; }
+  .result-title a:hover { text-decoration: underline; }
+
+  .result-snippet { font-size: 14px; line-height: 1.6; color: var(--text-dim); word-break: break-all; }
+  
+  .result-snippet mark { 
+    background: var(--accent-glow); 
+    color: var(--accent-dim); 
+    padding: 1px 2px; border-radius: 2px; 
+  }
+
+  .no-results { text-align: center; padding: 40px; color: var(--text-dim); font-size: 16px; }
+  .result-count { font-size: 14px; color: var(--text-dim); margin-bottom: 12px; }
+
+  .pagination { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+  .pagination button {
+    padding: 8px 16px; 
+    background: var(--bg-panel); 
+    color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px; cursor: pointer;
+    font-family: 'Noto Sans TC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  }
+  .pagination button:hover { border-color: var(--accent); }
+  .pagination button:disabled { opacity: 0.3; cursor: default; }
+  .pagination .page-info { padding: 8px 12px; color: var(--text-dim); font-size: 14px; display: flex; align-items: center; }
+
+  /* =========================================
+     ★ 關鍵修正：針對窄側邊欄的強制樣式 ★
+     當視窗寬度小於 380px 時 (剛好是你側邊欄的預設寬度)
+     ========================================= */
+  @media screen and (max-width: 380px) {
+    body { padding: 12px; } /* 縮小周圍留白，爭取空間 */
+    
+    .search-box { 
+      flex-direction: column; /* 強制變成直排 */
+      gap: 10px;
+    }
+    
+    #searchBtn { 
+      width: 100%; /* 按鈕變為全寬，超好按 */
+      text-align: center;
+    }
+
+    .search-options { 
+      flex-direction: column; /* 選項也變直排，防止太擠 */
+      gap: 8px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="search-container">
+  <h1>🔍 无限流TRPG圈版1.03（0.3） 全文搜索</h1>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="输入关键词..." autofocus>
+    <button id="searchBtn" onclick="doSearch()">搜索</button>
+  </div>
+
+  <div class="search-options">
+    <label><input type="checkbox" id="titleOnly"> 仅搜索标题</label>
+    <label><input type="checkbox" id="exactMatch"> 完全匹配</label>
+    <label><input type="checkbox" id="searchPath"> 搜索目录路径</label>
+  </div>
+
+  <div id="status">正在加载搜索索引...</div>
+  <div id="results"></div>
+  <div id="pagination" class="pagination"></div>
+</div>
+
+<script>
+let searchData = [];
+let currentResults = [];
+let currentPage = 1;
+let lastKeywords = [];
+const RESULTS_PER_PAGE = 20;
+
+fetch('search.json')
+  .then(r => r.json())
+  .then(data => {
+    searchData = data;
+    document.getElementById('status').textContent =
+      `索引加载完成，共 ${data.length} 个页面可供搜索。`;
+  })
+  .catch(err => {
+    document.getElementById('status').textContent = '索引加载失败，请确认 search.json 存在。';
+  });
+
+document.getElementById('searchInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') doSearch();
+});
+
+function doSearch() {
+  const query = document.getElementById('searchInput').value.trim();
+  if (!query || searchData.length === 0) return;
+
+  const titleOnly = document.getElementById('titleOnly').checked;
+  const exactMatch = document.getElementById('exactMatch').checked;
+  const searchPath = document.getElementById('searchPath').checked;
+
+  const keywords = exactMatch ? [query] : query.split(/\s+/).filter(k => k.length > 0);
+  lastKeywords = keywords;
+  currentResults = [];
+
+  for (const item of searchData) {
+    const titleLower = item.title.toLowerCase();
+    const contentLower = item.content.toLowerCase();
+    const pathLower = (item.path || '').toLowerCase();
+
+    let matchCount = 0;
+    let allMatch = true;
+
+    for (const kw of keywords) {
+      const kwLower = kw.toLowerCase();
+      const inTitle = titleLower.includes(kwLower);
+      const inContent = !titleOnly && contentLower.includes(kwLower);
+      const inPath = searchPath && pathLower.includes(kwLower);
+
+      if (inTitle || inContent || inPath) {
+        const titleHits = (titleLower.split(kwLower).length - 1) * 10;
+        const pathHits = (pathLower.split(kwLower).length - 1) * 5;
+        const contentHits = !titleOnly ? (contentLower.split(kwLower).length - 1) : 0;
+        matchCount += titleHits + pathHits + contentHits + 1;
+      } else {
+        allMatch = false;
+      }
+    }
+
+    if (allMatch && matchCount > 0) {
+      currentResults.push({ ...item, score: matchCount });
+    }
+  }
+
+  currentResults.sort((a, b) => b.score - a.score);
+  currentPage = 1;
+  renderResults();
+}
+
+function renderResults() {
+  const resultsDiv = document.getElementById('results');
+  const statusDiv = document.getElementById('status');
+  const paginationDiv = document.getElementById('pagination');
+  const keywords = lastKeywords;
+
+  if (currentResults.length === 0) {
+    statusDiv.textContent = '';
+    resultsDiv.innerHTML = '<div class="no-results">找不到相关结果，试试其他关键词？</div>';
+    paginationDiv.innerHTML = '';
+    return;
+  }
+
+  const totalPages = Math.ceil(currentResults.length / RESULTS_PER_PAGE);
+  const start = (currentPage - 1) * RESULTS_PER_PAGE;
+  const end = Math.min(start + RESULTS_PER_PAGE, currentResults.length);
+  const pageResults = currentResults.slice(start, end);
+
+  statusDiv.innerHTML = `<span class="result-count">找到 <strong>${currentResults.length}</strong> 个结果</span>`;
+
+  let html = '';
+  for (const item of pageResults) {
+    const snippet = getSnippet(item.content, keywords, 120);
+    const pathHtml = item.path
+      ? `<div class="result-path">📂 ${highlightText(escapeHtml(item.path), keywords)}</div>`
+      : '';
+
+    html += `
+      <div class="result-item" onclick="openPage('${escapeHtml(item.url)}')">
+        ${pathHtml}
+        <div class="result-title">
+          <a href="${escapeHtml(item.url)}" target="contentFrame" onclick="event.stopPropagation()">
+            ${highlightText(escapeHtml(item.title), keywords)}
+          </a>
+        </div>
+        <div class="result-snippet">${snippet}</div>
+      </div>`;
+  }
+  resultsDiv.innerHTML = html;
+
+  if (totalPages > 1) {
+    paginationDiv.innerHTML = `
+      <button onclick="goPage(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>上一页</button>
+      <span class="page-info">${currentPage} / ${totalPages}</span>
+      <button onclick="goPage(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>下一页</button>`;
+  } else {
+    paginationDiv.innerHTML = '';
+  }
+}
+
+function goPage(page) {
+  currentPage = page;
+  renderResults();
+  window.scrollTo(0, 0);
+}
+
+function openPage(url) {
+  if (parent && parent.frames && parent.frames['body']) {
+    parent.frames['body'].location.href = url;
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
+function getSnippet(content, keywords, contextLen) {
+  if (!content) return '';
+  const contentLower = content.toLowerCase();
+  let firstPos = content.length;
+  for (const kw of keywords) {
+    const pos = contentLower.indexOf(kw.toLowerCase());
+    if (pos !== -1 && pos < firstPos) firstPos = pos;
+  }
+  let start = Math.max(0, firstPos - contextLen);
+  let end = Math.min(content.length, firstPos + contextLen);
+  let snippet = content.substring(start, end);
+  if (start > 0) snippet = '...' + snippet;
+  if (end < content.length) snippet = snippet + '...';
+  return highlightText(escapeHtml(snippet), keywords);
+}
+
+function highlightText(text, keywords) {
+  for (const kw of keywords) {
+    const regex = new RegExp('(' + escapeRegex(escapeHtml(kw)) + ')', 'gi');
+    text = text.replace(regex, '<mark>$1</mark>');
+  }
+  return text;
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+</script>
+
+</body>
+</html>
