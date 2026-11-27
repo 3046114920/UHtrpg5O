@@ -136,109 +136,13 @@ style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'y
 <P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
 style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">无论如何，先攻不会降低为负数，最低为1。</SPAN></P>
 <P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">===========================================================================================================</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">===========================================================================================================</SPAN></P>
 <P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>由于某些特殊的情况，可能会导致先攻序列的变化</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>改变序列一般分为两种情况：第一种为改变先攻</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体></FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，第二种为改变位。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT color=#0000ff><STRONG>先攻序列的变化：</STRONG></FONT></SPAN></P>
 <P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>由于某些特殊的情况，可能会导致先攻序列的变化，改变序列一般分为两种情况：第一种为改变先攻，第二种为改变位。<BR>改变先攻：针对改变先攻的情况，则记录其改变后的先攻：<BR>先攻的改动将立即影响当前回合内的行动轮次。<BR>但是无论如何，通过改变先攻序列的方法，无法使角色在每轮内拥有超过一个回合。<BR>例1：先攻增加：<BR>一共A、B、C，D，4人，先攻数为A：25，B：20，C：15，D：10，此时的先攻顺序为ABCD，之后C获得了6点先攻，变成了21，则此时的行动顺序变为ACBD，此时若行动位为A，则A行动后，到C，C如常行动，然后到B行动；但是若修改先攻时的行动位已经轮到B，则B行动后，由于C没有行动过，即使按照正常的先攻序列会将C的轮跳过，C也将在自己原本的行动轮次行动一次，随后才轮到D的回合。<BR>例2：先攻降低：<BR>一共A、B、C，3人，先攻数为A：25，B：20，C：15，此时的先攻顺序为ABC，之后A降低了6点先攻，变为了19，则此时的行动顺序变为了BAC，此时的行动位若为B，则B行动后，到A，A行动后，由于C本轮没有行动过，所以如常行动。但是若修改先攻时的行动位已经轮到B，B结束后到A，但是由于A在本回合已经行动过了，所以跳过A，直接到C。<BR>改变先攻位与改变数值规则相同。<BR>但是改变先攻位的能力不会影响目标的先攻。<BR>例：一共A,B,2人，A先攻101，B先攻99，B使用能力让自己的先攻位提升1位，变成了B先手，但是在先攻数值的判断时，B依旧只有99先攻，A依旧是101先攻。<BR>延迟：你可以在轮到自己的回合开始时，不进行任何结算和行动，宣布一个不大于你当前的先攻的数值作为新的先攻，然后根据新的先攻，调整你的先攻序列。<BR>这种情况下，视为本回合你没有行动过。这个行为被称作延迟。<BR>===========================================================================================================<BR><FONT color=#0000ff><STRONG>中途参与一场已经开始的战斗：<BR></STRONG></FONT>有些时候，有些单位会作为第三方或一方的支援势力，在中途参与一场已经开始的战斗。<BR>所有中途参与战斗的单位需要投掷先攻，并且在当前回合的下一个回合（即当前先攻顺位最后的单位结束行动轮之后）根据先攻，将自己插入先攻顺位，参与战斗。</FONT></SPAN></P>
 <P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>改变先攻：</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>针对改变先攻</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体></FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>的情况，则记录其改变后的先攻</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体></FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>：</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>先攻的改动将立即影响当前回合内的行动轮次。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>但是无论如何，通过改变先攻序列的方法，无法使角色在每轮内拥有超过一个回合。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>例</FONT>1</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>：</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>先攻增加：</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>一共</FONT>A、B、C</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">,3</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>人，先攻数为</FONT>A：25，B：20，C：15，</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>此时的先攻顺序为</FONT>ABC，之后</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">C获得了6点先攻，变成了21，则此时的行动顺序变为AC</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">B</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，此时若行动位为</FONT>A，则A行动后，到C，C如常行动</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，然后到</FONT>B行动</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>；但是若修改先攻时的行动位已经轮到</FONT>B，则B行动后，由于C</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">没有行动过，即使按照正常的先攻序列会将C的轮跳过，C也将在自己原本的行动轮次行动一次。</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>例</FONT>2：先攻降低：</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>一共</FONT>A、B、C</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，</FONT>3</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>人，先攻数为</FONT>A：25，B：20，C：15，</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>此时的先攻顺序为</FONT>ABC，之后A</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>降低了</FONT>6点先攻，变为了</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">1</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">9，则此时的行动顺序变为了</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">BAC</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，此时的行动位若为</FONT>B，则B行动后，到</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">A</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">A</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>行动后，由于</FONT>C本轮没有行动过，所以如常行动。但是若修改先攻时的行动位已经轮到</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">B</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">B</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>结束后到</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">A</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，但是由于</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">A</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>在本回合已经行动过了，所以跳过</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">A</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，直接到</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">C。</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>改变先攻位与改变数值规则相同。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>延迟：你可以在轮到自己的回合开始时，不进行任何结算和行动，</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>宣布一个不大于你当前的先攻的</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>数值作为新的先攻</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，然后根据新的先攻，调整你的先攻序列。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>这种情况下，视为本回合你没有行动过。这个行为被称作延迟。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">===========================================================================================================</SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><B><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; FONT-WEIGHT: bold; COLOR: rgb(0,0,255); LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>中途参与一场已经开始的战斗：</FONT></SPAN></B><B><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; FONT-WEIGHT: bold; COLOR: rgb(0,0,255); LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></B></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>有些时候，有些单位会作为第三方或一方的支援势力，在中途参与一场已经开始的战斗。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>所有中途参与战斗的单位需要投掷先攻，并且在当前回合的下一个回合（即当前先攻顺位最后的单位结束行动轮之后）根据先攻</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体></FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>，将自己插入先攻顺位，参与战斗。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>中途参与战斗不会产生突袭轮，因为战场上的单位早已意识到战斗已经开始。</FONT></SPAN><SPAN 
-style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
-<P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><SPAN 
+style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><FONT face=宋体>当一个已经参与战斗的目标，在战斗中死亡之后复活，此时并不算中途重新参与战斗，而是可以在复活直接之后延续先攻序列正常行动。<BR>有些能力会让中途参与战斗的单位在当前回合就可以进行行动，此时根据先攻规则正常行动。<BR>例：一共A、B、C，D，4人，先攻数为A：25，B：20，C：15，此时的先攻顺序为ABC,此时B的回合结束，D加入战斗，若D的先攻位10，则B回合结束之后，到C的回合再轮到D，若D的先攻为21，则B的回合结束之后会先进行D的回合再轮到C行动。<BR>中途参与战斗不会产生突袭轮，因为战场上的单位早已意识到战斗已经开始。<BR></FONT></SPAN><SPAN 
 style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt">===========================================================================================================</SPAN><SPAN 
 style="FONT-SIZE: 12pt; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%; mso-spacerun: 'yes'; mso-font-kerning: 1.0000pt"><o:p></o:p></SPAN></P>
 <P class=MsoNormal style="MARGIN: 0pt; LINE-HEIGHT: 150%"><B><SPAN 
